@@ -1,0 +1,18 @@
+digraph lista{
+rankdir=LR;
+node[shape = record];
+nodonull1[label="null"];
+nodonull2[label="null"];
+nodonull1->nodo0 [dir=back];
+nodo0[label="Cristian"];
+nodo1[label="Alberto"];
+nodo2[label="Suy"];
+nodo3[label="Mejia"];
+nodo0->nodo1;
+nodo1->nodo0;
+nodo1->nodo2;
+nodo2->nodo1;
+nodo2->nodo3;
+nodo3->nodo2;
+nodo3->nodonull2;
+}
