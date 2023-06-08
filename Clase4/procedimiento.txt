@@ -1,0 +1,21 @@
+main.go
+-| Estructuras
+-| CSV 
+--|imagen1
+    -|inicial.csv
+    -|config.csv
+    -|capa1.csv
+    -|capa2.csv
+--|imagen2
+--|imagen3
+
+Dentro de Go
+
+1.ver imagenes cargadas
+    1.imagen1
+    2.imagen2
+    3.imagen3
+    elija una imagen: 1
+
+codigo 
+ubicacionArchivo := "./nombreProyecto/csv/" + listadoble.imagen.nombre +  "/inicial.csv"
