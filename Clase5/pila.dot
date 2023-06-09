@@ -1,0 +1,4 @@
+digraph pila{
+rankdir=LR;
+node[shape = record]nodo0 [label="|(Carnet: 202004703, Color: cachorro)|(Carnet: 202300847, Color: mario)|(Carnet: 202300887, Color: letra)|(Carnet: 202300081, Color: mario)|(Carnet: 201700653, Color: estrellita)"]; 
+}
