@@ -24,8 +24,10 @@ func main() {
 	/*Especial*/
 	matriz.Insertar_Elemento(0, 0, "0-0-0")
 	//matriz.Reporte()
-	imagen := "mario"
-	archivo := "body.csv"
-	matriz_csv.LeerArchivo("csv/" + imagen + "/" + archivo)
-	matriz_csv.Reporte()
+	imagen := "deadpool"
+	//archivo := "body.csv"
+	//matriz_csv.LeerArchivo("csv/" + imagen + "/" + archivo)
+	//matriz_csv.Reporte()
+	matriz_csv.LeerInicial("csv/"+imagen+"/inicial.csv", imagen)
+	matriz_csv.GenerarImagen(imagen)
 }

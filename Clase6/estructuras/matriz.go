@@ -6,10 +6,15 @@ import (
 	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 type Matriz struct {
-	Raiz *NodoMatriz
+	Raiz        *NodoMatriz
+	ImageWidth  int
+	ImageHeight int
+	PixelWidth  int
+	PixelHeight int
 }
 
 func (m *Matriz) buscarC(x int) *NodoMatriz {
@@ -231,4 +236,120 @@ func (m *Matriz) LeerArchivo(ruta string) {
 		x = 0
 		y++
 	}
+}
+
+func (m *Matriz) LeerInicial(ruta string, imagen string) {
+	file, err := os.Open(ruta)
+	if err != nil {
+		fmt.Println("No pude abrir el archivo")
+		return
+	}
+	defer file.Close()
+
+	lectura := csv.NewReader(file)
+	lectura.Comma = ','
+	encabezado := true
+	for {
+		linea, err := lectura.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println("No pude leer la linea del csv")
+			continue
+		}
+		if encabezado {
+			encabezado = false
+			continue
+		}
+		if linea[0] == "0" {
+			m.leerConfig("csv/" + imagen + "/" + linea[1]) /*csv/mario/config.csv*/
+		} else {
+			m.LeerArchivo("csv/" + imagen + "/" + linea[1])
+		}
+	}
+}
+
+func (m *Matriz) leerConfig(ruta string) {
+	file, err := os.Open(ruta)
+	if err != nil {
+		fmt.Println("No pude abrir el archivo")
+		return
+	}
+	defer file.Close()
+
+	lectura := csv.NewReader(file)
+	lectura.Comma = ','
+	for {
+		linea, err := lectura.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			fmt.Println("No pude leer la linea del csv")
+			continue
+		}
+		numero, _ := strconv.Atoi(linea[1])
+		if linea[0] == "image_width" {
+			m.ImageWidth = numero
+		} else if linea[0] == "image_height" {
+			m.ImageHeight = numero
+		} else if linea[0] == "pixel_width" {
+			m.PixelWidth = numero
+		} else if linea[0] == "pixel_height" {
+			m.PixelHeight = numero
+		}
+	}
+}
+
+func (m *Matriz) GenerarImagen(nombre_imagen string) {
+	archivoCSS := "csv/" + nombre_imagen + "/" + nombre_imagen + ".css" // csv/mario/mario.css
+	contenidoCSS := "body{\n background: #333333; \n height: 100vh; \n display: flex; \n justify-content: center; \n align-items: center; \n } \n"
+	contenidoCSS += ".canvas{ \n width: " + strconv.Itoa(m.ImageWidth*m.PixelWidth) + "px; \n"
+	contenidoCSS += "height: " + strconv.Itoa(m.ImageHeight*m.PixelHeight) + "px; \n }"
+	contenidoCSS += ".pixel{ \n width: " + strconv.Itoa(m.PixelWidth) + "px; \n"
+	contenidoCSS += "height: " + strconv.Itoa(m.PixelHeight) + "px; \n float: left; \n } \n"
+	x_pixel := 0
+	x := 1
+	auxFila := m.Raiz.Abajo
+	auxColumna := auxFila.Siguiente
+
+	//* Nueva Version*//
+	for i := 0; i < m.ImageHeight; i++ {
+		for j := 0; j < m.ImageWidth; j++ {
+			if auxColumna != nil {
+				if auxColumna.PosX == x_pixel {
+					contenidoCSS += ".pixel:nth-child(" + strconv.Itoa(x) + ") { background: rgb(" + strings.ReplaceAll(auxColumna.Color, "-", ",") + "); }\n"
+					auxColumna = auxColumna.Siguiente
+				}
+				x_pixel++
+			}
+			x++
+		}
+		x_pixel = 0
+		auxFila = auxFila.Abajo
+		if auxFila != nil {
+			auxColumna = auxFila.Siguiente
+		}
+	}
+
+	/*FIN*/
+	m.generarHTML(nombre_imagen)
+	crearArchivo(archivoCSS)
+	escribirArchivo(contenidoCSS, archivoCSS)
+}
+
+func (m *Matriz) generarHTML(nombre_imagen string) {
+	archivoHTML := "csv/" + nombre_imagen + "/" + nombre_imagen + ".html"
+	contenidoHTML := "<!DOCTYPE html> \n <html> \n <head> \n <link rel=\"stylesheet\"  href=\""
+	contenidoHTML += nombre_imagen + ".css"
+	contenidoHTML += "\" > \n </head> \n <body> \n <div class=\"canvas\"> \n"
+	for i := 0; i < m.ImageHeight; i++ {
+		for j := 0; j < m.ImageWidth; j++ {
+			contenidoHTML += "    <div class=\"pixel\"></div> \n"
+		}
+	}
+	contenidoHTML += "</div> \n </body> \n </html> \n"
+	crearArchivo(archivoHTML)
+	escribirArchivo(contenidoHTML, archivoHTML)
 }
