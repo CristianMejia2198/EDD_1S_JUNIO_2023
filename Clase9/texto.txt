@@ -1,0 +1,26 @@
+fetch('localhost:3001/agregar-arbol',{
+    method: 'POST',
+    body: JSON.stringify({
+        Valor: 5
+    }),
+    headers:{
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => validar(data));
+
+const validar = (data) => {
+    if data.Valor > -1 {
+        alert("Se agrego satisfactoriamente")
+    }else{
+        alert(error)
+    }
+}
+
+
+
+fetch('localhost:3001/',{
+})
+.then(response => response.json())
+.then(data => validar(data));
