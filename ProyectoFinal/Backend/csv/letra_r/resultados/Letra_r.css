@@ -1,0 +1,31 @@
+body{
+ background: #333333; 
+ height: 100vh; 
+ display: flex; 
+ justify-content: center; 
+ align-items: center; 
+ } 
+.canvas{ 
+ width: 150px; 
+height: 300px; 
+ } 
+.pixel{ 
+ width: 30px; 
+height: 30px; 
+ float: left; 
+ } 
+    .pixel:nth-child(12){ background: rgb(255,255,255); }
+    .pixel:nth-child(13){ background: rgb(255,255,255); }
+    .pixel:nth-child(14){ background: rgb(255,255,255); }
+    .pixel:nth-child(17){ background: rgb(255,255,255); }
+    .pixel:nth-child(20){ background: rgb(255,255,255); }
+    .pixel:nth-child(22){ background: rgb(255,255,255); }
+    .pixel:nth-child(27){ background: rgb(255,255,255); }
+    .pixel:nth-child(32){ background: rgb(255,255,255); }
+    .pixel:nth-child(37){ background: rgb(255,255,255); }
+    .pixel:nth-child(42){ background: rgb(255,255,255); }
+    .pixel:nth-child(47){ background: rgb(255,255,255); }
+    .pixel:nth-child(44){ background: rgb(76,76,76); }
+    .pixel:nth-child(45){ background: rgb(76,76,76); }
+    .pixel:nth-child(49){ background: rgb(76,76,76); }
+    .pixel:nth-child(50){ background: rgb(76,76,76); }

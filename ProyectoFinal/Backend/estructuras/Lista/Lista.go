@@ -58,3 +58,14 @@ func (l *ListaDoble) LeerArchivo(ruta string) {
 		l.Insertar(linea[0], linea[3])
 	}
 }
+
+func (l *ListaDoble) Buscar(id_empleado string, password string) bool {
+	aux := l.Inicio
+	for aux != nil {
+		if aux.Empleado.Id_Cliente == id_empleado && aux.Empleado.Password == password {
+			return true
+		}
+		aux = aux.Siguiente
+	}
+	return false
+}

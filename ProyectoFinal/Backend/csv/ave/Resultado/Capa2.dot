@@ -1,0 +1,88 @@
+digraph MatrizCapa{ 
+ node[shape=box] 
+ rankdir=UD; 
+ {rank=min; 
+nodo00[label="2" ,rankdir=LR,group=0]; 
+nodo50[label="C4" ,rankdir=LR,group=5]; 
+nodo60[label="C5" ,rankdir=LR,group=6]; 
+nodo70[label="C6" ,rankdir=LR,group=7]; 
+nodo80[label="C7" ,rankdir=LR,group=8]; 
+nodo90[label="C8" ,rankdir=LR,group=9]; 
+nodo100[label="C9" ,rankdir=LR,group=10]; 
+nodo110[label="C10" ,rankdir=LR,group=11]; 
+nodo120[label="C11" ,rankdir=LR,group=12]; 
+nodo130[label="C12" ,rankdir=LR,group=13]; 
+nodo140[label="C13" ,rankdir=LR,group=14]; 
+} 
+{rank=same; 
+nodo00[label="2" ,group=0]; 
+nodo50[label="C4" ,group=5]; 
+nodo60[label="C5" ,group=6]; 
+nodo70[label="C6" ,group=7]; 
+nodo80[label="C7" ,group=8]; 
+nodo90[label="C8" ,group=9]; 
+nodo100[label="C9" ,group=10]; 
+nodo110[label="C10" ,group=11]; 
+nodo120[label="C11" ,group=12]; 
+nodo130[label="C12" ,group=13]; 
+nodo140[label="C13" ,group=14]; 
+} 
+{rank=same; 
+nodo010[label="F9" ,group=0]; 
+nodo810[label="230-138-0" ,group=8]; 
+nodo910[label="230-138-0" ,group=9]; 
+nodo1010[label="230-138-0" ,group=10]; 
+nodo1110[label="230-138-0" ,group=11]; 
+} 
+{rank=same; 
+nodo011[label="F10" ,group=0]; 
+nodo911[label="230-138-0" ,group=9]; 
+nodo1011[label="230-138-0" ,group=10]; 
+} 
+{rank=same; 
+nodo016[label="F15" ,group=0]; 
+nodo516[label="230-138-0" ,group=5]; 
+nodo616[label="230-138-0" ,group=6]; 
+nodo716[label="230-138-0" ,group=7]; 
+nodo1216[label="230-138-0" ,group=12]; 
+nodo1316[label="230-138-0" ,group=13]; 
+nodo1416[label="230-138-0" ,group=14]; 
+} 
+nodo00 -> nodo50 [dir=both];
+nodo50 -> nodo60 [dir=both];
+nodo60 -> nodo70 [dir=both];
+nodo70 -> nodo80 [dir=both];
+nodo80 -> nodo90 [dir=both];
+nodo90 -> nodo100 [dir=both];
+nodo100 -> nodo110 [dir=both];
+nodo110 -> nodo120 [dir=both];
+nodo120 -> nodo130 [dir=both];
+nodo130 -> nodo140 [dir=both];
+nodo010 -> nodo810 [dir=both];
+nodo810 -> nodo910 [dir=both];
+nodo910 -> nodo1010 [dir=both];
+nodo1010 -> nodo1110 [dir=both];
+nodo011 -> nodo911 [dir=both];
+nodo911 -> nodo1011 [dir=both];
+nodo016 -> nodo516 [dir=both];
+nodo516 -> nodo616 [dir=both];
+nodo616 -> nodo716 [dir=both];
+nodo716 -> nodo1216 [dir=both];
+nodo1216 -> nodo1316 [dir=both];
+nodo1316 -> nodo1416 [dir=both];
+nodo00 -> nodo010 [dir=both];
+nodo010 -> nodo011 [dir=both];
+nodo011 -> nodo016 [dir=both];
+nodo50 -> nodo516 [dir=both];
+nodo60 -> nodo616 [dir=both];
+nodo70 -> nodo716 [dir=both];
+nodo80 -> nodo810 [dir=both];
+nodo90 -> nodo910 [dir=both];
+nodo910 -> nodo911 [dir=both];
+nodo100 -> nodo1010 [dir=both];
+nodo1010 -> nodo1011 [dir=both];
+nodo110 -> nodo1110 [dir=both];
+nodo120 -> nodo1216 [dir=both];
+nodo130 -> nodo1316 [dir=both];
+nodo140 -> nodo1416 [dir=both];
+}

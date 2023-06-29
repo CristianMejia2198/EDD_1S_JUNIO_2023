@@ -7,14 +7,26 @@ export const Administrador = () => {
     const reportes = (e) => {
         e.preventDefault();
         console.log("Listo")
-        window.open("/reportes-admin","_self")
+        window.open("/reportes","_self")
     }
+
     const onChange = (e) => {
         e.preventDefault();
         var reader = new FileReader();
         reader.onload = (e) => {
             var obj = JSON.parse(e.target.result);
             console.log(obj.pedidos)
+            fetch('http://localhost:3001/cargarpedidos',{
+                method: 'POST',
+                body: JSON.stringify({
+                    Pedidos: obj.pedidos
+                }),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => validar(data))
         };
         reader.readAsText(e.target.files[0]);
     }

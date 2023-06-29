@@ -28,7 +28,8 @@ export const Login = () => {
         if(data.status == "400"){
             window.open("/admin","_self")
         }else if(data.status == "200"){
-            window.open("/","_self")
+            localStorage.setItem("empleado", user)
+            window.open("/empleado","_self")
         }else{
             console.log("ME dio ansiedad")
         }

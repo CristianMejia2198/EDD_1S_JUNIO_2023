@@ -1,0 +1,87 @@
+digraph MatrizCapa{ 
+ node[shape=box] 
+ rankdir=UD; 
+ {rank=min; 
+nodo00[label="1" ,rankdir=LR,group=0]; 
+nodo20[label="C1" ,rankdir=LR,group=2]; 
+nodo30[label="C2" ,rankdir=LR,group=3]; 
+nodo40[label="C3" ,rankdir=LR,group=4]; 
+nodo50[label="C4" ,rankdir=LR,group=5]; 
+} 
+{rank=same; 
+nodo00[label="1" ,group=0]; 
+nodo20[label="C1" ,group=2]; 
+nodo30[label="C2" ,group=3]; 
+nodo40[label="C3" ,group=4]; 
+nodo50[label="C4" ,group=5]; 
+} 
+{rank=same; 
+nodo03[label="F2" ,group=0]; 
+nodo23[label="0-0-0" ,group=2]; 
+nodo33[label="0-0-0" ,group=3]; 
+nodo43[label="0-0-0" ,group=4]; 
+} 
+{rank=same; 
+nodo04[label="F3" ,group=0]; 
+nodo24[label="0-0-0" ,group=2]; 
+nodo54[label="0-0-0" ,group=5]; 
+} 
+{rank=same; 
+nodo05[label="F4" ,group=0]; 
+nodo25[label="0-0-0" ,group=2]; 
+} 
+{rank=same; 
+nodo06[label="F5" ,group=0]; 
+nodo26[label="0-0-0" ,group=2]; 
+} 
+{rank=same; 
+nodo07[label="F6" ,group=0]; 
+nodo27[label="0-0-0" ,group=2]; 
+} 
+{rank=same; 
+nodo08[label="F7" ,group=0]; 
+nodo28[label="0-0-0" ,group=2]; 
+} 
+{rank=same; 
+nodo09[label="F8" ,group=0]; 
+nodo29[label="0-0-0" ,group=2]; 
+} 
+{rank=same; 
+nodo010[label="F9" ,group=0]; 
+nodo210[label="0-0-0" ,group=2]; 
+} 
+nodo00 -> nodo20 [dir=both];
+nodo20 -> nodo30 [dir=both];
+nodo30 -> nodo40 [dir=both];
+nodo40 -> nodo50 [dir=both];
+nodo03 -> nodo23 [dir=both];
+nodo23 -> nodo33 [dir=both];
+nodo33 -> nodo43 [dir=both];
+nodo04 -> nodo24 [dir=both];
+nodo24 -> nodo54 [dir=both];
+nodo05 -> nodo25 [dir=both];
+nodo06 -> nodo26 [dir=both];
+nodo07 -> nodo27 [dir=both];
+nodo08 -> nodo28 [dir=both];
+nodo09 -> nodo29 [dir=both];
+nodo010 -> nodo210 [dir=both];
+nodo00 -> nodo03 [dir=both];
+nodo03 -> nodo04 [dir=both];
+nodo04 -> nodo05 [dir=both];
+nodo05 -> nodo06 [dir=both];
+nodo06 -> nodo07 [dir=both];
+nodo07 -> nodo08 [dir=both];
+nodo08 -> nodo09 [dir=both];
+nodo09 -> nodo010 [dir=both];
+nodo20 -> nodo23 [dir=both];
+nodo23 -> nodo24 [dir=both];
+nodo24 -> nodo25 [dir=both];
+nodo25 -> nodo26 [dir=both];
+nodo26 -> nodo27 [dir=both];
+nodo27 -> nodo28 [dir=both];
+nodo28 -> nodo29 [dir=both];
+nodo29 -> nodo210 [dir=both];
+nodo30 -> nodo33 [dir=both];
+nodo40 -> nodo43 [dir=both];
+nodo50 -> nodo54 [dir=both];
+}

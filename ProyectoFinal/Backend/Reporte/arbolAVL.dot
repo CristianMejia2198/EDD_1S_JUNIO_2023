@@ -1,0 +1,1 @@
+digraph arbol{ "13" ; x1 [label="",width=.1,style=invis];"13" -> "12" ;"13" -> "14" ; x2 [label="",width=.1,style=invis];"14" -> x2[style=invis]; "14" -> "15" ;{rank=same x2 -> "15" [style=invis]}; {rank=same"12" -> "14" [style=invis]}; }
