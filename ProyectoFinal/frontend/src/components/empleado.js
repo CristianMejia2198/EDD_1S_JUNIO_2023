@@ -21,18 +21,12 @@ export const Empleado = () => {
 
     const generarFacturas = async(e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/reporte-arbol',{
-        })
-        .then(response => response.json())
-        .then(data => validar(data));
+        window.open("/factura","_self")
     }
     
     const verFacturas = async(e) => {
         e.preventDefault();
-        fetch('http://localhost:3001/reporte-arbol',{
-        })
-        .then(response => response.json())
-        .then(data => validar(data));
+        window.open("/verfactura","_self")
     }
 
     return(

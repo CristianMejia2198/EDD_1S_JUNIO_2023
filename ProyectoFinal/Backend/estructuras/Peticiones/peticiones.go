@@ -24,5 +24,17 @@ type RespuestaImagen struct {
 }
 
 type PeticionFiltro struct {
-	Tipo int
+	Tipo         int
+	NombreImagen string
+}
+
+type BloquePeticion struct {
+	Timestamp string
+	Biller    string
+	Customer  string
+	Payment   string
+}
+
+type Empleado struct {
+	IdEmpleado string
 }

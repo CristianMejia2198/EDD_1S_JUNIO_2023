@@ -418,21 +418,9 @@ func (m *Matriz) Negativo(nombre_imagen string) {
 					r, _ := strconv.Atoi(colores[0])
 					b, _ := strconv.Atoi(colores[1])
 					g, _ := strconv.Atoi(colores[2])
-					if r >= 255 {
-						r = 0
-					} else {
-						r = 255 - r
-					}
-					if g >= 255 {
-						g = 0
-					} else {
-						g = 255 - g
-					}
-					if b >= 255 {
-						b = 0
-					} else {
-						b = 255 - b
-					}
+					r = 255 - r
+					g = 255 - g
+					b = 255 - b
 					auxColumna.Color = strconv.Itoa(r) + "," + strconv.Itoa(g) + "," + strconv.Itoa(b)
 					/**/
 					contenidoCSS += ".pixel:nth-child(" + strconv.Itoa(x) + ") { background: rgb(" + auxColumna.Color + "); }\n"
@@ -453,4 +441,68 @@ func (m *Matriz) Negativo(nombre_imagen string) {
 	m.generarHTML(nombre_imagen)
 	GenerarArchivos.CrearArchivo(archivoCSS)
 	GenerarArchivos.EscribirArchivo(contenidoCSS, archivoCSS)
+}
+
+func (m *Matriz) RotacionDoble() {
+	matrizAux := Matriz{Raiz: &NodoMatriz{PosX: -1, PosY: -1, Color: "Raiz"}}
+	auxFila := m.Raiz.Abajo
+	auxColumna := auxFila.Siguiente
+	//* Nueva Version*//
+	for i := 0; i < m.ImageHeight; i++ {
+		for j := 0; j < m.ImageWidth; j++ {
+			if auxColumna != nil {
+				x := m.ImageWidth - 1 - auxColumna.PosX
+				y := m.ImageHeight - 1 - auxColumna.PosY
+				matrizAux.Insertar_Elemento(x, y, auxColumna.Color)
+				auxColumna = auxColumna.Siguiente
+			}
+		}
+		auxFila = auxFila.Abajo
+		if auxFila != nil {
+			auxColumna = auxFila.Siguiente
+		}
+	}
+	m.Raiz = matrizAux.Raiz
+}
+
+func (m *Matriz) RotacionX() {
+	matrizAux := Matriz{Raiz: &NodoMatriz{PosX: -1, PosY: -1, Color: "Raiz"}}
+	auxFila := m.Raiz.Abajo
+	auxColumna := auxFila.Siguiente
+	//* Nueva Version*//
+	for i := 0; i < m.ImageHeight; i++ {
+		for j := 0; j < m.ImageWidth; j++ {
+			if auxColumna != nil {
+				x := m.ImageWidth - 1 - auxColumna.PosX
+				matrizAux.Insertar_Elemento(x, auxColumna.PosY, auxColumna.Color)
+				auxColumna = auxColumna.Siguiente
+			}
+		}
+		auxFila = auxFila.Abajo
+		if auxFila != nil {
+			auxColumna = auxFila.Siguiente
+		}
+	}
+	m.Raiz = matrizAux.Raiz
+}
+
+func (m *Matriz) RotacionY() {
+	matrizAux := Matriz{Raiz: &NodoMatriz{PosX: -1, PosY: -1, Color: "Raiz"}}
+	auxFila := m.Raiz.Abajo
+	auxColumna := auxFila.Siguiente
+	//* Nueva Version*//
+	for i := 0; i < m.ImageHeight; i++ {
+		for j := 0; j < m.ImageWidth; j++ {
+			if auxColumna != nil {
+				y := m.ImageHeight - 1 - auxColumna.PosY
+				matrizAux.Insertar_Elemento(auxColumna.PosX, y, auxColumna.Color)
+				auxColumna = auxColumna.Siguiente
+			}
+		}
+		auxFila = auxFila.Abajo
+		if auxFila != nil {
+			auxColumna = auxFila.Siguiente
+		}
+	}
+	m.Raiz = matrizAux.Raiz
 }

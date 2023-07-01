@@ -19,7 +19,8 @@ export const Filtros = () => {
         fetch('http://localhost:3001/aplicarfiltro',{
             method: 'POST',
             body: JSON.stringify({
-                Tipo: filtro
+                Tipo: filtro,
+                NombreImagen: ""
             }),
             headers:{
                 'Content-Type': 'application/json'
